@@ -6,12 +6,6 @@ COPY requirements.txt req.txt
 
 RUN pip install -r req.txt
 
-FROM python:3.10-slim
-
-WORKDIR /pyapp
-
-COPY --from=build /root/.local /root/.local
-
 COPY . .
 
 EXPOSE 8000
