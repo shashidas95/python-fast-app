@@ -30,12 +30,6 @@ jobs:
           pip install ruff
           ruff --output-format=github .
         continue-on-error: true
-
-
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
@@ -52,7 +46,6 @@ jobs:
         run: |
           docker build -t shashidas/python-fast-app:py -f Dockerfile .
           docker push shashidas/python-fast-app:py
-       
 
 
 #  - name: Build package
