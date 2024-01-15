@@ -1,10 +1,17 @@
 name: Python package
-on: [push]
+on: 
+  push:
+   branches: new-feature
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout to new feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: new-feature
+      - name: branch check 
+        run: git branch
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -31,12 +38,13 @@ jobs:
           pip install pytest pytest-cov
           pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
         continue-on-error: true
-
+      - name: checkout to main branch
+        uses: actions/checkout@v4
       - name: Merge changes to main branch
         run: |
           git branch
-          git merge --no-ff origin/main
-      - uses: actions/checkout@v4
+          git merge --no-ff origin/new-feature
+    
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
