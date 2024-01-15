@@ -34,6 +34,7 @@ jobs:
 
       - name: Merge changes to main branch
         run: |
+          git branch
           git merge --no-ff origin/main
       - uses: actions/checkout@v4
       - name: Login to DockerHub
