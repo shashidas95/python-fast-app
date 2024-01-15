@@ -45,6 +45,7 @@ jobs:
       - name: Merge changes to main branch
         run: |
           git branch
+          git pull origin new-feature
           git merge --no-ff origin/new-feature
     
       - name: Login to DockerHub
