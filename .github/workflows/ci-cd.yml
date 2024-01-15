@@ -10,6 +10,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: new-feature
+      - name: Set up Git
+        run: git config pull.rebase false
       - name: branch check 
         run: git branch
       - name: Set up Python
