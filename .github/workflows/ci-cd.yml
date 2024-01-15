@@ -40,6 +40,8 @@ jobs:
         continue-on-error: true
       - name: checkout to main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Merge changes to main branch
         run: |
           git branch
