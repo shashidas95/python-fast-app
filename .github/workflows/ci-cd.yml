@@ -47,7 +47,7 @@ jobs:
       - name: Merge changes to main branch
         run: |
         
-         git merge origin/new-feature
+         git merge --allow-unrelated-histories origin/new-feature
     
       - name: Login to DockerHub
         uses: docker/login-action@v2
